@@ -2,3 +2,7 @@ Fri, Mar 21, 2025 11:09:49 AM:
  tests:  0|5
 total_score: 0/70
 3f6cb15
+Fri, Mar 21, 2025  4:42:00 PM: 
+./test.sh: line 26: gcc: command not found
+Compilation failed
+ca445db
