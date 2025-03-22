@@ -41,9 +41,20 @@ debes reservar memoria para cada elemento que agregues.
 Al finalizar retorna la lista creada.
 */
 
-List* crea_lista() {
-   List* L = create_list();
-   return L;
+List* crea_lista() 
+{
+   List* L = (List*)malloc(sizeof(int));  
+   if (!L) exit(EXIT_FAILURE);
+
+    for (int k = 1; k <= 10; k++) 
+    {
+        int* elemento = (int*)malloc(sizeof(int));
+        if (!elemento) exit(EXIT_FAILURE);
+
+        *elemento = k;
+        push_back(L, elemento);
+    }
+    return L;
 }
 
 /*
@@ -51,8 +62,16 @@ Ejercicio 2.
 Crea una función que reciba una lista de enteros (int*) y 
 retorne la suma de sus elementos.
 */
-int sumaLista(List *L) {
-   return 0;
+int sumaLista(List *L) 
+{
+   int* dato = first(L);
+   int suma = 0;
+   while(dato !=NULL)
+   {
+      suma += *dato;
+      dato = next(L);
+   }
+   return suma;
 }
 
 /*
@@ -64,8 +83,19 @@ Asume que popCurrent luego de eliminar un elemento se
 posiciona en el elemento anterior.
 */
 
-void eliminaElementos(List*L, int elem){
-
+void eliminaElementos(List*L, int elem)
+{
+   int* dato = first(L);
+   while(dato != NULL)
+   {
+      if(*dato == elem)
+      {
+         popCurrent(L);
+      }
+      else dato = next(L);
+      
+   }
+   
 }
 
 /*
@@ -75,7 +105,20 @@ El orden de ambas pilas se debe mantener.
 Puedes usar una pila auxiliar.
 */
 
-void copia_pila(Stack* P1, Stack* P2) {
+void copia_pila(Stack* P1, Stack* P2) 
+{
+   Stack* aux = create_stack();
+   while(top(P1) != NULL)
+   {
+      push(aux,pop(P1));
+   }
+   while(top(aux) != NULL)
+   {
+      push(P2,aux);
+      push(P1,pop(aux));
+   }
+
+
 }
 
 /*
@@ -85,7 +128,22 @@ paraéntesis balanceados. Retorna 1 si están balanceados,
 0 en caso contrario.
 */
 
-int parentesisBalanceados(char *cadena) {
-   return 0;
+int parentesisBalanceados(char *cadena) 
+{
+   int contador = 0;
+   
+   for (int i = 0; cadena[i] != '\0'; i++) 
+   {
+       if (cadena[i] == '(') 
+       {
+           contador++;  
+       } 
+       else if (cadena[i] == ')') 
+       {
+           contador--;  
+       }
+   }
+   if(contador == 0) return 1;
+   else return 0;
 }
 
