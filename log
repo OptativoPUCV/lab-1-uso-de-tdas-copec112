@@ -45,3 +45,31 @@ Fri, Apr 11, 2025  4:00:43 PM:
  tests:  5|3
 total_score: 30/70
 7cd9a2f
+Fri, Apr 11, 2025  4:03:22 PM: 
+ exercises.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+In file included from test.c:5:0:
+exercises.c: In function 'copia_pila':
+exercises.c:128:19: error: initialization makes integer from pointer without a cast [-Werror=int-conversion]
+       int valor = pop(aux);
+                   ^~~
+exercises.c:129:16: error: passing argument 2 of 'push' makes pointer from integer without a cast [-Werror=int-conversion]
+       push(P2, valor);
+                ^~~~~
+In file included from exercises.c:7:0,
+                 from test.c:5:
+stack.h:11:6: note: expected 'void *' but argument is of type 'int'
+ void push(Stack *stack, void *data) { pushFront(stack, data); }
+      ^~~~
+In file included from test.c:5:0:
+exercises.c:130:16: error: passing argument 2 of 'push' makes pointer from integer without a cast [-Werror=int-conversion]
+       push(P1, valor);
+                ^~~~~
+In file included from exercises.c:7:0,
+                 from test.c:5:
+stack.h:11:6: note: expected 'void *' but argument is of type 'int'
+ void push(Stack *stack, void *data) { pushFront(stack, data); }
+      ^~~~
+cc1.exe: all warnings being treated as errors
+Compilation failed
+029aa89
