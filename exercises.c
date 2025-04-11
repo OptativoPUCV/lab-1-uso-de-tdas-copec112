@@ -43,8 +43,7 @@ Al finalizar retorna la lista creada.
 
 List* crea_lista() 
 {
-   List* L = (List*)malloc(sizeof(int));  
-   if (!L) exit(EXIT_FAILURE);
+      List* L = create_list();
 
     for (int k = 1; k <= 10; k++) 
     {
@@ -52,7 +51,7 @@ List* crea_lista()
         if (!elemento) exit(EXIT_FAILURE);
 
         *elemento = k;
-        push_back(L, elemento);
+        pushBack(L, elemento);
     }
     return L;
 }
@@ -85,16 +84,24 @@ posiciona en el elemento anterior.
 
 void eliminaElementos(List*L, int elem)
 {
+   /*
    int* dato = first(L);
    while(dato != NULL)
    {
+      int* primero = first(L);
+      if (elem == *primero)
+      {
+         popFront(L);
+         dato = first(L);
+      }
       if(*dato == elem)
       {
          popCurrent(L);
+         dato = next(L);
       }
       else dato = next(L);
       
-   }
+   }*/
    
 }
 
